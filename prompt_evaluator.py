@@ -39,7 +39,7 @@ class PromptEvaluator:
                 {"role": "user", "content": question},
                 {"role": "system", "content": prompt}
             ],
-            model=os.getenv(self.target_model_name),
+            model=self.target_model_name,
             temperature=self.target_model_config.get('temperature'),
             stream=False
         )
@@ -57,7 +57,7 @@ class PromptEvaluator:
             messages=[
                 {"role": "user", "content": review_prompt},
             ],
-            model=os.getenv(self.review_model_name),
+            model=self.review_model_name,
             temperature=self.review_model_config.get('temperature'),
             stream=False
         )

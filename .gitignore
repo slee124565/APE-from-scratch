@@ -164,5 +164,4 @@ cython_debug/
 runs/
 bbh_navigate_cache/
 bbh_nshapes_cache/
-/test.csv
-/train.csv
+/*.csv
