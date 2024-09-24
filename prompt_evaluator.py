@@ -1,15 +1,24 @@
 import asyncio
+import os
+
 import pandas as pd
-from vertexai.generative_models import GenerativeModel
+# from vertexai.generative_models import GenerativeModel
+import llm
 from tqdm.asyncio import tqdm_asyncio
 import backoff
+import dotenv
+
+dotenv.load_dotenv()
+
 
 class ReviewModelError(Exception):
     """Custom exception for review model errors."""
     pass
 
+
 class PromptEvaluator:
-    def __init__(self, df_train, target_model_name, target_model_config, review_model_name, review_model_config, safety_settings, review_prompt_template_path):
+    def __init__(self, df_train, target_model_name, target_model_config, review_model_name, review_model_config,
+                 safety_settings, review_prompt_template_path):
         self.df_train = df_train
         self.target_model_name = target_model_name
         self.target_model_config = target_model_config
@@ -18,23 +27,33 @@ class PromptEvaluator:
         self.safety_settings = safety_settings
         self.review_prompt_template_path = review_prompt_template_path
 
-        self.target_model = GenerativeModel(self.target_model_name)
-        self.review_model = GenerativeModel(self.review_model_name)
+        # self.target_model = GenerativeModel(self.target_model_name)
+        self.target_model = llm.get_model(os.getenv('TARGET_MODEL_NAME'))
+        # self.review_model = GenerativeModel(self.review_model_name)
+        self.review_model = llm.get_model(os.getenv('REVIEW_MODEL_NAME'))
 
     @backoff.on_exception(backoff.expo, Exception, max_tries=5)
     async def generate_target_model_response(self, question, prompt):
-        target_model = GenerativeModel(
-            self.target_model_name,
-            generation_config=self.target_model_config,
-            safety_settings=self.safety_settings,
-            system_instruction=prompt
-        )
-
-        response = await target_model.generate_content_async(
-            question,
-            stream=False,
-        )
-        return response.text
+        # target_model = GenerativeModel(
+        #     self.target_model_name,
+        #     generation_config=self.target_model_config,
+        #     safety_settings=self.safety_settings,
+        #     system_instruction=prompt
+        # )
+        #
+        # response = await target_model.generate_content_async(
+        #     question,
+        #     stream=False,
+        # )
+        # return response.text
+        target_model = llm.get_model(os.getenv(self.target_model_name))
+        response = target_model.prompt(
+            prompt=question,
+            system=prompt,
+            temperature=self.target_model_config.get('temperature'),
+            stream=False
+        ).text()
+        return response
 
     @backoff.on_exception(backoff.expo, Exception, max_tries=5)
     async def generate_review_model_response(self, review_prompt):
@@ -70,7 +89,7 @@ class PromptEvaluator:
 
             is_correct = review_result == 'true'  # Check if the response is 'True'
 
-            return row.name, model_response, is_correct 
+            return row.name, model_response, is_correct
         except ReviewModelError as e:
             print(f"Error: {e}. The review model did not return a valid response. Terminating the program.")
             raise  # Re-raise the exception to be caught in the main function
