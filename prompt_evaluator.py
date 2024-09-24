@@ -3,7 +3,7 @@ import os
 
 import pandas as pd
 # from vertexai.generative_models import GenerativeModel
-import llm
+import openai
 from tqdm.asyncio import tqdm_asyncio
 import backoff
 import dotenv
@@ -26,44 +26,42 @@ class PromptEvaluator:
         self.review_model_config = review_model_config
         self.safety_settings = safety_settings
         self.review_prompt_template_path = review_prompt_template_path
-
         # self.target_model = GenerativeModel(self.target_model_name)
-        self.target_model = llm.get_model(os.getenv('TARGET_MODEL_NAME'))
+        self.target_model = openai.AsyncOpenAI(api_key=os.getenv('OPENAI_API_KEY'))
         # self.review_model = GenerativeModel(self.review_model_name)
-        self.review_model = llm.get_model(os.getenv('REVIEW_MODEL_NAME'))
+        self.review_model = openai.AsyncOpenAI(api_key=os.getenv('OPENAI_API_KEY'))
 
     @backoff.on_exception(backoff.expo, Exception, max_tries=5)
     async def generate_target_model_response(self, question, prompt):
-        # target_model = GenerativeModel(
-        #     self.target_model_name,
-        #     generation_config=self.target_model_config,
-        #     safety_settings=self.safety_settings,
-        #     system_instruction=prompt
-        # )
-        #
-        # response = await target_model.generate_content_async(
-        #     question,
-        #     stream=False,
-        # )
-        # return response.text
-        target_model = llm.get_model(os.getenv(self.target_model_name))
-        response = target_model.prompt(
-            prompt=question,
-            system=prompt,
+        target_model = openai.AsyncOpenAI(api_key=os.getenv('OPENAI_API_KEY'))
+        response = await target_model.chat.completions.create(
+            messages=[
+                {"role": "user", "content": question},
+                {"role": "system", "content": prompt}
+            ],
+            model=os.getenv(self.target_model_name),
             temperature=self.target_model_config.get('temperature'),
             stream=False
-        ).text()
-        return response
+        )
+        return response.choices[0].message.content
 
     @backoff.on_exception(backoff.expo, Exception, max_tries=5)
     async def generate_review_model_response(self, review_prompt):
-        review_response = await self.review_model.generate_content_async(
-            [review_prompt],
-            generation_config=self.review_model_config,
-            safety_settings=self.safety_settings,
-            stream=False,
+        # review_response = await self.review_model.generate_content_async(
+        #     [review_prompt],
+        #     generation_config=self.review_model_config,
+        #     safety_settings=self.safety_settings,
+        #     stream=False,
+        # )
+        review_response = await self.review_model.chat.completions.create(
+            messages=[
+                {"role": "user", "content": review_prompt},
+            ],
+            model=os.getenv(self.review_model_name),
+            temperature=self.review_model_config.get('temperature'),
+            stream=False
         )
-        return review_response.text.strip().lower()
+        return review_response.choices[0].message.content.strip().lower()
 
     async def generate_and_review(self, row, prompt):
         try:
