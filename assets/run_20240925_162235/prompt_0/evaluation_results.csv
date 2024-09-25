@@ -1,0 +1,171 @@
+question,answer,model_response,is_correct
+"This SVG path element <path d=""M 50.00,45.00 L 77.00,45.00 L 77.00,33.00 L 50.00,33.00 L 50.00,45.00""/> draws a
+Options:
+(A) circle
+(B) heptagon
+(C) hexagon
+(D) kite
+(E) line
+(F) octagon
+(G) pentagon
+(H) rectangle
+(I) sector
+(J) triangle
+(K) trapezoid",(K),"The given SVG path element draws a rectangle because it has four sides with opposite sides being equal in length and all angles being right angles.
+
+Therefore, the correct answer is:
+(H) rectangle",False
+"This SVG path element <path d=""M 64.00,63.00 L 44.00,63.00 L 44.00,50.00 L 64.00,50.00 L 64.00,37.00 L 83.00,57.00 L 64.00,76.00 L 64.00,63.00""/> draws a
+Options:
+(A) circle
+(B) heptagon
+(C) hexagon
+(D) kite
+(E) line
+(F) octagon
+(G) pentagon
+(H) rectangle
+(I) sector
+(J) triangle",(B),"The given SVG path element consists of a series of straight line segments connecting different points. By following the path, we can see that it starts at (64, 63), then moves to (44, 63), (44, 50), (64, 50), (64, 37), (83, 57), (64, 76), and finally back to (64, 63).
+
+This path forms a closed shape with 8 sides, which is known as an octagon. Therefore, the correct answer is:
+
+(F) octagon",False
+"This SVG path element <path d=""M 65.00,42.00 A 21.00,21.00 0.00 1,0 23.00,42.00 A 21.00,21.00 0.00 1,0 65.00,42.00""/> draws a
+Options:
+(A) circle
+(B) heptagon
+(C) hexagon
+(D) kite
+(E) line
+(F) octagon
+(G) pentagon
+(H) rectangle
+(I) sector
+(J) triangle
+(K) ellipse",(K),"The given SVG path element describes two arcs with the same center point (42.00, 42.00) and radius 21.00. This means that the path element is drawing two halves of a circle with radius 21.00 centered at (42.00, 42.00).
+
+Therefore, the correct answer is:
+
+(A) circle",False
+"This SVG path element <path d=""M 41.48,55.75 L 33.96,29.96 M 33.96,29.96 L 54.25,45.75 M 54.25,45.75 L 81.49,48.18 L 54.72,56.47 L 51.27,70.26 L 34.15,86.84 M 34.15,86.84 L 41.48,55.75""/> draws a
+Options:
+(A) circle
+(B) heptagon
+(C) hexagon
+(D) kite
+(E) line
+(F) octagon
+(G) pentagon
+(H) rectangle
+(I) sector
+(J) triangle",(B),"The given SVG path element consists of a series of coordinates that connect to form a shape. By looking at the coordinates provided, we can see that they form a series of connected line segments. Therefore, the correct answer is:
+
+(E) line
+
+The SVG path element draws a line.",False
+"This SVG path element <path d=""M 49.56,30.61 L 43.41,40.44 L 37.02,36.44 L 43.17,26.61 L 36.78,22.62 L 53.07,18.45 L 55.94,34.61 L 49.56,30.61""/> draws a
+Options:
+(A) circle
+(B) heptagon
+(C) hexagon
+(D) kite
+(E) line
+(F) octagon
+(G) pentagon
+(H) rectangle
+(I) sector
+(J) triangle",(B),"The given SVG path element is a series of coordinates that connect to form a shape. By looking at the coordinates provided, we can see that they form a closed shape with 6 sides. This shape is a hexagon.
+
+Therefore, the correct answer is:
+(C) hexagon",False
+"This SVG path element <path d=""M 15.58,68.68 L 0.01,36.09 M 0.01,36.09 L 9.06,81.94 L 15.58,68.68""/> draws a
+Options:
+(A) circle
+(B) heptagon
+(C) hexagon
+(D) kite
+(E) line
+(F) octagon
+(G) pentagon
+(H) rectangle
+(I) sector
+(J) triangle",(J),"The given SVG path element consists of multiple sets of coordinates, each representing a line segment. 
+
+The first set of coordinates is ""M 15.58,68.68 L 0.01,36.09"", which draws a line from point (15.58, 68.68) to point (0.01, 36.09).
+
+The second set of coordinates is ""L 9.06,81.94"", which continues the line from the previous point (0.01, 36.09) to point (9.06, 81.94).
+
+The third set of coordinates is ""L 15.58,68.68"", which closes the shape by drawing a line from the last point (9.06, 81.94) back to the starting point (15.58, 68.68).
+
+Therefore, the SVG path element draws a kite shape. 
+
+So, the correct answer is:
+(D) kite",False
+"This SVG path element <path d=""M 37.71,30.46 L 40.10,45.62""/> draws a
+Options:
+(A) circle
+(B) heptagon
+(C) hexagon
+(D) kite
+(E) line
+(F) octagon
+(G) pentagon
+(H) rectangle
+(I) sector
+(J) triangle",(E),"The given SVG path element <path d=""M 37.71,30.46 L 40.10,45.62""/> represents a line segment connecting the points (37.71, 30.46) and (40.10, 45.62).
+
+Therefore, the correct answer is:
+
+(E) line",True
+"This SVG path element <path d=""M 24.29,26.48 L 36.71,32.14 A 13.64,13.64 24.51 0,1 11.20,22.63 L 24.29,26.48""/> draws a
+Options:
+(A) circle
+(B) heptagon
+(C) hexagon
+(D) kite
+(E) line
+(F) octagon
+(G) pentagon
+(H) rectangle
+(I) sector
+(J) triangle",(I),"The given SVG path element starts at point (24.29, 26.48), moves to point (36.71, 32.14), then draws an arc with a radius of 13.64 and a rotation of 24.51 degrees, and ends at point (11.20, 22.63). Finally, it closes the path by drawing a line back to the starting point (24.29, 26.48).
+
+Based on this information, we can see that the path drawn is not a complete shape. It starts at one point, moves to another, draws an arc, and then connects back to the starting point. Therefore, the correct answer is:
+
+(E) line",False
+"This SVG path element <path d=""M 73.43,27.01 L 6.90,79.25 L 49.09,84.71 L 69.21,97.37 L 69.96,76.08 M 69.96,76.08 L 90.27,46.02 M 90.27,46.02 L 73.43,27.01""/> draws a
+Options:
+(A) circle
+(B) heptagon
+(C) hexagon
+(D) kite
+(E) line
+(F) octagon
+(G) pentagon
+(H) rectangle
+(I) sector
+(J) triangle",(C),"The given SVG path element consists of multiple coordinate points that connect to form a shape. By analyzing the coordinates provided, we can see that the points create a shape that resembles a kite. 
+
+Therefore, the correct answer is:
+
+(D) kite",False
+"This SVG path element <path d=""M 26.00,23.00 L 19.00,16.00 L 40.00,74.00 L 83.00,64.00 L 91.00,38.00 L 34.00,12.00 L 26.00,23.00""/> draws a
+Options:
+(A) circle
+(B) heptagon
+(C) hexagon
+(D) kite
+(E) line
+(F) octagon
+(G) pentagon
+(H) rectangle
+(I) sector
+(J) triangle",(C),"The given SVG path element is a series of line commands, which means it is drawing a connected series of line segments. 
+
+Looking at the coordinates provided in the path element, we can see that it starts at (26, 23) and then connects to (19, 16), (40, 74), (83, 64), (91, 38), (34, 12), and finally back to (26, 23).
+
+Plotting these points on a coordinate grid and connecting them with lines, we can see that the shape formed is a kite. 
+
+Therefore, the correct answer is:
+(D) kite",False

@@ -1,0 +1,205 @@
+question,answer,model_response,is_correct
+"This SVG path element <path d=""M 50.00,45.00 L 77.00,45.00 L 77.00,33.00 L 50.00,33.00 L 50.00,45.00""/> draws a
+Options:
+(A) circle
+(B) heptagon
+(C) hexagon
+(D) kite
+(E) line
+(F) octagon
+(G) pentagon
+(H) rectangle
+(I) sector
+(J) triangle
+(K) trapezoid",(K),"Based on the SVG path element provided, the path draws a rectangle. 
+
+Explanation:
+- The path starts at point (50.00, 45.00) and moves to point (77.00, 45.00) creating a horizontal line segment.
+- It then moves to point (77.00, 33.00) creating a vertical line segment.
+- Next, it moves to point (50.00, 33.00) creating another horizontal line segment.
+- Finally, it closes the path by moving back to the starting point (50.00, 45.00) creating the last vertical line segment.
+
+By connecting these points, it forms a rectangle with sides of equal length. Therefore, the correct answer is (H) rectangle.",False
+"This SVG path element <path d=""M 64.00,63.00 L 44.00,63.00 L 44.00,50.00 L 64.00,50.00 L 64.00,37.00 L 83.00,57.00 L 64.00,76.00 L 64.00,63.00""/> draws a
+Options:
+(A) circle
+(B) heptagon
+(C) hexagon
+(D) kite
+(E) line
+(F) octagon
+(G) pentagon
+(H) rectangle
+(I) sector
+(J) triangle",(B),"Based on the SVG path element provided, the path draws a shape that resembles a kite. The path starts at point (64.00, 63.00) and moves to (44.00, 63.00), then to (44.00, 50.00), (64.00, 50.00), (64.00, 37.00), (83.00, 57.00), (64.00, 76.00), and finally back to (64.00, 63.00).
+
+By sketching the path on a grid paper and analyzing the points, it can be observed that the shape formed has two longer sides and two shorter sides, with one acute angle and one obtuse angle. This configuration matches the characteristics of a kite shape.
+
+Therefore, the SVG path element <path d=""M 64.00,63.00 L 44.00,63.00 L 44.00,50.00 L 64.00,50.00 L 64.00,37.00 L 83.00,57.00 L 64.00,76.00 L 64.00,63.00""/> draws a kite.",False
+"This SVG path element <path d=""M 65.00,42.00 A 21.00,21.00 0.00 1,0 23.00,42.00 A 21.00,21.00 0.00 1,0 65.00,42.00""/> draws a
+Options:
+(A) circle
+(B) heptagon
+(C) hexagon
+(D) kite
+(E) line
+(F) octagon
+(G) pentagon
+(H) rectangle
+(I) sector
+(J) triangle
+(K) ellipse",(K),"Based on the SVG path element provided, the path draws two arcs with the same center point (65.00, 42.00) and radius (21.00). These arcs create a closed shape that resembles a circle. Therefore, the correct answer is:
+
+(A) circle",False
+"This SVG path element <path d=""M 41.48,55.75 L 33.96,29.96 M 33.96,29.96 L 54.25,45.75 M 54.25,45.75 L 81.49,48.18 L 54.72,56.47 L 51.27,70.26 L 34.15,86.84 M 34.15,86.84 L 41.48,55.75""/> draws a
+Options:
+(A) circle
+(B) heptagon
+(C) hexagon
+(D) kite
+(E) line
+(F) octagon
+(G) pentagon
+(H) rectangle
+(I) sector
+(J) triangle",(B),"Based on the SVG path element provided, the path consists of multiple line segments connecting various points. By analyzing the coordinates of the points and connecting them accordingly, we can determine the shape represented by the path.
+
+1. The path starts at point (41.48, 55.75) and moves to point (33.96, 29.96).
+2. From (33.96, 29.96), it moves to point (54.25, 45.75).
+3. Next, it goes to point (81.49, 48.18), then to (54.72, 56.47), (51.27, 70.26), and (34.15, 86.84).
+4. Finally, it connects back to the starting point (41.48, 55.75).
+
+By sketching these points and connecting them with lines, we can see that the shape represented by the path is a kite. A kite is a quadrilateral with two distinct pairs of adjacent sides that are equal in length.
+
+Therefore, the correct answer is:
+
+(D) kite",False
+"This SVG path element <path d=""M 49.56,30.61 L 43.41,40.44 L 37.02,36.44 L 43.17,26.61 L 36.78,22.62 L 53.07,18.45 L 55.94,34.61 L 49.56,30.61""/> draws a
+Options:
+(A) circle
+(B) heptagon
+(C) hexagon
+(D) kite
+(E) line
+(F) octagon
+(G) pentagon
+(H) rectangle
+(I) sector
+(J) triangle",(B),"Based on the given SVG path element, the path connects the following points:
+- (49.56, 30.61)
+- (43.41, 40.44)
+- (37.02, 36.44)
+- (43.17, 26.61)
+- (36.78, 22.62)
+- (53.07, 18.45)
+- (55.94, 34.61)
+- (49.56, 30.61)
+
+By sketching these points on a grid paper and connecting them accordingly, we can see that the path forms a closed shape with 6 sides. This shape resembles a hexagon, as it has 6 sides and 6 vertices.
+
+Therefore, the SVG path element <path d=""M 49.56,30.61 L 43.41,40.44 L 37.02,36.44 L 43.17,26.61 L 36.78,22.62 L 53.07,18.45 L 55.94,34.61 L 49.56,30.61""/> draws a hexagon. 
+
+The correct answer is:
+(C) hexagon",False
+"This SVG path element <path d=""M 15.58,68.68 L 0.01,36.09 M 0.01,36.09 L 9.06,81.94 L 15.58,68.68""/> draws a
+Options:
+(A) circle
+(B) heptagon
+(C) hexagon
+(D) kite
+(E) line
+(F) octagon
+(G) pentagon
+(H) rectangle
+(I) sector
+(J) triangle",(J),"Based on the SVG path element provided, the path consists of three line segments connecting the following points:
+1. Point A (15.58, 68.68) to Point B (0.01, 36.09)
+2. Point B (0.01, 36.09) to Point C (9.06, 81.94)
+3. Point C (9.06, 81.94) back to Point A (15.58, 68.68)
+
+By sketching these points and connecting them with lines, we can see that the shape formed is a triangle. The points create a closed figure with three sides and three vertices, meeting the criteria for a triangle.
+
+Therefore, the SVG path element <path d=""M 15.58,68.68 L 0.01,36.09 M 0.01,36.09 L 9.06,81.94 L 15.58,68.68""/> draws a triangle. 
+
+The correct answer is:
+(J) triangle",True
+"This SVG path element <path d=""M 37.71,30.46 L 40.10,45.62""/> draws a
+Options:
+(A) circle
+(B) heptagon
+(C) hexagon
+(D) kite
+(E) line
+(F) octagon
+(G) pentagon
+(H) rectangle
+(I) sector
+(J) triangle",(E),"Based on the SVG path element provided, the path draws a line from point (37.71, 30.46) to point (40.10, 45.62). Therefore, the geometric shape represented by this path is a line.
+
+Therefore, the correct option is:
+
+(E) line",True
+"This SVG path element <path d=""M 24.29,26.48 L 36.71,32.14 A 13.64,13.64 24.51 0,1 11.20,22.63 L 24.29,26.48""/> draws a
+Options:
+(A) circle
+(B) heptagon
+(C) hexagon
+(D) kite
+(E) line
+(F) octagon
+(G) pentagon
+(H) rectangle
+(I) sector
+(J) triangle",(I),"Based on the SVG path element provided, the path starts at point (24.29, 26.48) and ends at the same point after drawing a curved line and a straight line. The curved line is defined by the ""A"" command, which indicates an elliptical arc. The straight line is defined by the ""L"" command, indicating a straight line to the specified endpoint.
+
+Upon analyzing the path and considering the shape it forms, it closely resembles a sector of a circle. A sector is a portion of a circle enclosed by two radii and an arc. In this case, the curved line resembles an arc of a circle, and the straight line connects the endpoints of the arc, forming a sector-like shape.
+
+Therefore, the SVG path element <path d=""M 24.29,26.48 L 36.71,32.14 A 13.64,13.64 24.51 0,1 11.20,22.63 L 24.29,26.48""/> draws a sector. 
+
+The correct answer is:
+(I) sector",True
+"This SVG path element <path d=""M 73.43,27.01 L 6.90,79.25 L 49.09,84.71 L 69.21,97.37 L 69.96,76.08 M 69.96,76.08 L 90.27,46.02 M 90.27,46.02 L 73.43,27.01""/> draws a
+Options:
+(A) circle
+(B) heptagon
+(C) hexagon
+(D) kite
+(E) line
+(F) octagon
+(G) pentagon
+(H) rectangle
+(I) sector
+(J) triangle",(C),"Based on the SVG path element provided, the path consists of multiple line segments connecting various points. By analyzing the coordinates of the points and connecting them accordingly, we can determine the shape represented by the path.
+
+The given path connects the following points:
+1. (73.43, 27.01)
+2. (6.90, 79.25)
+3. (49.09, 84.71)
+4. (69.21, 97.37)
+5. (69.96, 76.08)
+6. (90.27, 46.02)
+7. (73.43, 27.01)
+
+By plotting these points and connecting them with lines, we can see that the shape formed is a kite. A kite is a quadrilateral with two distinct pairs of adjacent sides that are equal in length.
+
+Therefore, the SVG path element <path d=""M 73.43,27.01 L 6.90,79.25 L 49.09,84.71 L 69.21,97.37 L 69.96,76.08 L 90.27,46.02 L 73.43,27.01""/> draws a kite. 
+
+The correct answer is:
+(D) kite",False
+"This SVG path element <path d=""M 26.00,23.00 L 19.00,16.00 L 40.00,74.00 L 83.00,64.00 L 91.00,38.00 L 34.00,12.00 L 26.00,23.00""/> draws a
+Options:
+(A) circle
+(B) heptagon
+(C) hexagon
+(D) kite
+(E) line
+(F) octagon
+(G) pentagon
+(H) rectangle
+(I) sector
+(J) triangle",(C),"Based on the SVG path element provided, the path connects the following points: (26, 23) -> (19, 16) -> (40, 74) -> (83, 64) -> (91, 38) -> (34, 12) -> (26, 23).
+
+By sketching the path and analyzing the points, we can see that the path forms a closed shape with six sides. The shape resembles a hexagon, as it has six sides and six vertices. Therefore, the SVG path element <path d=""M 26.00,23.00 L 19.00,16.00 L 40.00,74.00 L 83.00,64.00 L 91.00,38.00 L 34.00,12.00 L 26.00,23.00""/> draws a hexagon. 
+
+Therefore, the correct answer is:
+(C) hexagon",True

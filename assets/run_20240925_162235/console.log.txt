@@ -1,0 +1,265 @@
+(venv) leemacair@airm2 APE-from-scratch % python 03_ape.py
+======================================================================================================================================================
+Prompt number 0
+Evaluating Prompt: 100%|███████████████████████████████████████████████████████████████████████████| 10/10 [00:04<00:00,  2.18it/s]
+Evaluating Prompt: 100%|███████████████████████████████████████████████████████████████████████████| 10/10 [00:04<00:00,  2.35it/s]
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Overall accuracy for prompt: 0.10
+======================================================================================================================================================
+======================================================================================================================================================
+Prompt number 1
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Alright, let's analyze the provided information to come up with an improved prompt.
+
+**What hasn't worked:**
+- The previous prompt: "Solve the given problem about geometric shapes. Think step by step." had a very low accuracy (0.10).
+  - This prompt was short and somewhat vague. It lacked specific guidance.
+
+**What we need to improve:**
+- **Specific Instructions:** The prompt should explicitly instruct the model to consider all aspects of the shape and the geometric properties.
+- **Detailed Analysis:** Encourage a thorough examination of the information provided.
+- **Formal Language:** Given that the previous prompt was formal but still lacked details, we need to keep the formal tone but add more substance.
+
+**Creating the new prompt:**
+- The prompt will be longer, as it needs to include more details.
+- It will be more explicit in instructing the model.
+- It will encourage verifying the answer by cross-checking the properties of the geometric shapes.
+
+With these considerations in mind, here is the new prompt:
+
+[[Carefully analyze the given SVG path element to identify the geometric shape it describes. Consider each segment and intersection in the path. Verify your conclusion by cross-checking the properties of the identified shape against common geometric definitions. Provide the most accurate answer based on this detailed analysis.]]
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Evaluating Prompt: 100%|███████████████████████████████████████████████████████████████████████████| 10/10 [00:12<00:00,  1.22s/it]
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Overall accuracy for prompt: 0.40
+======================================================================================================================================================
+======================================================================================================================================================
+Prompt number 2
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Let's analyze the provided prompts to determine what has worked well and what hasn't:
+
+### Analysis of Provided Prompts
+
+1. **Low Accuracy Prompt (0.10 Accuracy)**
+   ```
+   Solve the given problem about geometric shapes. Think step by step.
+   ```
+   - **Issues Identified:**
+     - Too broad in scope and lacks specific instructions.
+     - Merely asks to think step by step without guiding what specific steps should be taken.
+     - Very short and unspecific, leading to potentially scattered thinking.
+
+2. **Moderate Accuracy Prompt (0.40 Accuracy)**
+   ```
+   Carefully analyze the given SVG path element to identify the geometric shape it describes. Consider each segment and intersection in the path. Verify your conclusion by cross-checking the properties of the identified shape against common geometric definitions. Provide the most accurate answer based on this detailed analysis.
+   ```
+   - **Strengths Identified:**
+     - More detailed guidance on the steps to take ("consider each segment and intersection").
+     - Encourages cross-checking properties against geometric definitions.
+     - Longer and more detailed, which helps to focus the analysis.
+   - **Potential Weaknesses:**
+     - Though detailed, it may still lack emphasis on specific verification techniques or visualizing the path.
+
+Given these insights, a higher accuracy prompt should:
+- Be detailed and specific.
+- Include step-by-step guidance that emphasizes verification and cross-referencing.
+- Possibly include a suggestion to sketch or visualize the geometric shapes.
+- Encourage critical thinking and thorough checking.
+
+### Crafting the New High-Accuracy Prompt
+
+Considering the above points, let's create a new prompt:
+
+[[
+Examine the provided SVG path element thoroughly to determine the geometric shape it represents. Follow these steps:
+1. Break down the path into individual segments and label each point.
+2. Sketch the path on paper to visualize the shape.
+3. Identify intersections and count the sides.
+4. Match the identified sides and internal angles with known geometric shapes.
+5. Cross-verify your findings with standard geometric properties to ensure accuracy.
+Provide the most accurate geometric shape based on this comprehensive analysis. Take your time to ensure precision.
+]]
+
+This new prompt:
+- Is distinct and significantly more detailed than both previous prompts.
+- Includes concrete steps to follow, with a focus on visualization and cross-verification.
+- Encourages taking time to ensure a precise answer, reducing the chances of oversight.
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Evaluating Prompt: 100%|███████████████████████████████████████████████████████████████████████████| 10/10 [00:05<00:00,  1.99it/s]
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Overall accuracy for prompt: 0.40
+======================================================================================================================================================
+======================================================================================================================================================
+Prompt number 3
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Alright, let's analyze the given information and prompts to craft a new, high-accuracy prompt.
+
+### Analysis of Existing Prompts:
+
+**1. First Prompt:**
+- **Text:** "Solve the given problem about geometric shapes. Think step by step."
+- **Accuracy:** 0.10
+- **Characteristics:**
+  - Very general and brief.
+  - Provides minimal guidance.
+  - Informal language.
+  - Lacks specificity.
+
+**2. Second Prompt:**
+- **Text:** "Carefully analyze the given SVG path element to identify the geometric shape it describes. Consider each segment and intersection in the path. Verify your conclusion by cross-checking the properties of the identified shape against common geometric definitions. Provide the most accurate answer based on this detailed analysis."
+- **Accuracy:** 0.40
+- **Characteristics:**
+  - Detailed, but slightly lengthy.
+  - Formal language.
+  - Steps are outlined but not explicitly numbered.
+  - Specific about verification.
+
+**3. Third Prompt:**
+- **Text:** "Examine the provided SVG path element thoroughly to determine the geometric shape it represents. Follow these steps:
+  1. Break down the path into individual segments and label each point.
+  2. Sketch the path on paper to visualize the shape.
+  3. Identify intersections and count the sides.
+  4. Match the identified sides and internal angles with known geometric shapes.
+  5. Cross-verify your findings with standard geometric properties to ensure accuracy.
+  Provide the most accurate geometric shape based on this comprehensive analysis. Take your time to ensure precision."
+- **Accuracy:** 0.40
+- **Characteristics:**
+  - Very detailed and structured.
+  - Formal and precise language.
+  - Explicitly numbered steps.
+  - Emphasizes on thorough verification and precision.
+
+### Determining Patterns for High Accuracy:
+- **Successful Patterns:**
+  - Detailed and explicit instructions.
+  - Structure with clear steps tends to work well.
+  - Instructions on verification and considering multiple properties.
+  - Formal and precise language.
+
+- **Unsuccessful Patterns:**
+  - Very brief and general instructions.
+  - Lack of specific steps.
+  - Informal language.
+
+### Crafting a New Prompt:
+- I'll maintain the detailed and structured approach as it leads to higher accuracy.
+- I'll use clear, precise, and formal language.
+- I'll add emphasis on the proper method of analysis and verification.
+- I’ll incorporate hypothetical element to help visualize the problem to improve understanding.
+
+[[
+Analyze the SVG path element provided to identify the geometric shape it forms. Follow this methodical approach:
+1. Break down the entire path into distinct segments, identify, and label each critical point.
+2. Imagine the path being drawn out step-by-step on a blank canvas.
+3. Count the number of sides and check for any intersections within the path.
+4. Compare the counted sides and measured angles with standard geometric shapes.
+5. Verify your results by cross-referencing with known geometric properties and definitions.
+6. Double-check your chosen shape by visualizing it within its possible practical applications.
+Identify the most accurate geometric shape through this meticulous and detailed analysis, ensuring all aspects align with standard geometric principles.
+]]
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Evaluating Prompt: 100%|███████████████████████████████████████████████████████████████████████████| 10/10 [00:04<00:00,  2.03it/s]
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Overall accuracy for prompt: 0.30
+======================================================================================================================================================
+======================================================================================================================================================
+Prompt number 4
+------------------------------------------------------------------------------------------------------------------------------------------------------
+To create a highly effective prompt, let's carefully examine the elements of previous prompts that contributed to higher accuracy and avoid the pitfalls of less effective ones.
+
+**Analysis of Previous Prompts:**
+
+1. **Prompt with 0.10 Accuracy:**
+   - Short and vague: "Solve the given problem about geometric shapes. Think step by step."
+   - Lacks specificity and detail.
+
+2. **Prompts with 0.30 and 0.40 Accuracy:**
+   - Detailed and methodical step-by-step approach.
+   - Use of specific actions like breaking down the path, labeling, sketching, counting sides, and cross-referencing geometric properties.
+   - Focus on visualization and verification.
+
+**Key Elements for High Accuracy:**
+- Detailed and clear instructions.
+- Multiple steps to ensure thorough analysis.
+- Specific actions that help visualize and verify geometric properties.
+- Comparison with known geometric shapes and properties.
+
+**Key Elements to Avoid:**
+- Vague and non-specific instructions.
+- Lack of a structured approach.
+
+*Based on these observations, here's the new prompt:*
+
+[[
+
+Analyze the provided SVG path element to identify the geometric shape it forms. Follow these steps meticulously:
+1. Decompose the path into individual segments and note down each point.
+2. Create a precise sketch of the path on a blank sheet of paper.
+3. Count and label the sides and note any intersections.
+4. Compare the number of sides and internal angles with standard geometric shapes.
+5. Validate your observations by checking against known geometric properties and definitions.
+6. Reassess your conclusion by visualizing the shape in practical applications and ensuring consistency.
+Provide the most accurate geometric shape based on this careful and comprehensive analysis.
+
+]]
+
+This prompt builds on the detailed and structured approach that has proven effective in past prompts, while ensuring it is distinct by incorporating validation through practical visualization and reassessment of the conclusion. This should help achieve a high accuracy rate.
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Evaluating Prompt: 100%|███████████████████████████████████████████████████████████████████████████| 10/10 [00:04<00:00,  2.31it/s]
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Overall accuracy for prompt: 0.30
+======================================================================================================================================================
+======================================================================================================================================================
+Prompt number 5
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Let's first analyze patterns in the given prompts to understand what works and what doesn't.
+
+### Patterns in Low Accuracy Prompts:
+- **Prompt 1 (Accuracy: 0.10):** This was very vague with little structure. "Solve the given problem about geometric shapes. Think step by step."
+  - **Issues:** Not specific, no detailed instructions, and lacks a systematic approach to analysis.
+
+### Patterns in Medium Accuracy Prompts:
+- **Prompts 2 & 3 (Accuracy: 0.30):** Both were detailed and methodical but perhaps too verbose.
+  - **Content:** Analyze, break down, sketch, count sides, compare, verify, reassess.
+  - **Issues:** Both prompts are very similar and repetitive in parts. While these are structured, they might be overly elaborate.
+
+### Patterns in Higher Accuracy Prompts:
+- **Prompts 4 & 5 (Accuracy: 0.40):** These are detailed and provide a systematic approach but are more concise than the 0.30 accuracy prompts.
+  - **Content:** Carefully analyze, break down, sketch, identify intersections, match properties, cross-verify.
+  - **Successful Elements:** Structured step-by-step instructions, emphasizing verification and practical confirmation.
+
+Based on the analysis:
+1. **Clarity and Specificity:** Higher accuracy prompts have clear, specific, and methodical instructions.
+2. **Conciseness:** Higher accuracy prompts are concise and avoid unnecessary repetition.
+3. **Verification Emphasis:** High accuracy prompts emphasize verifying against known properties and practical applications.
+
+### Creating a New High-Accuracy Prompt:
+- I'll keep it concise and structured.
+- I'll focus on precise steps for analysis.
+- I'll emphasize verification against known properties.
+- I'll introduce a new element for creativity—consider potential errors and how to rectify them.
+
+[[
+
+Thoroughly analyze the SVG path element to determine the geometric shape it represents with the following steps:
+
+1. Break down the path into individual segments and precisely identify each point.
+2. Recreate the path by sketching it on a grid paper for better accuracy.
+3. Count and label the sides and note any intersections clearly.
+4. Compare sides and internal angles with known geometric shapes for identification.
+5. Verify your identified shape by cross-checking its properties with standard geometric definitions.
+6. Consider potential errors in your initial identification and reassess to ensure all criteria align perfectly with the identified shape.
+Provide the most precise geometric shape based on this detailed and cautious analysis.
+
+]]
+
+This prompt incorporates all effective strategies from previous higher accuracy prompts, introduces error consideration for meticulousness, and is distinct from all given prompts.
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Evaluating Prompt: 100%|███████████████████████████████████████████████████████████████████████████| 10/10 [00:05<00:00,  1.91it/s]
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Overall accuracy for prompt: 0.40
+======================================================================================================================================================
+======================================================================================================================================================
+Final best prompt: Carefully analyze the given SVG path element to identify the geometric shape it describes. Consider each segment and intersection in the path. Verify your conclusion by cross-checking the properties of the identified shape against common geometric definitions. Provide the most accurate answer based on this detailed analysis.
+Accuracy of best prompt: 0.40
+Improvement in accuracy: 0.30
