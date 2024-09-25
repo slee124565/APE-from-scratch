@@ -1,12 +1,12 @@
 import asyncio
 import os
-
 import pandas as pd
 # from vertexai.generative_models import GenerativeModel
 import openai
 from tqdm.asyncio import tqdm_asyncio
 import backoff
 import dotenv
+import config
 
 dotenv.load_dotenv()
 
@@ -27,13 +27,13 @@ class PromptEvaluator:
         self.safety_settings = safety_settings
         self.review_prompt_template_path = review_prompt_template_path
         # self.target_model = GenerativeModel(self.target_model_name)
-        self.target_model = openai.AsyncOpenAI(api_key=os.getenv('OPENAI_API_KEY'))
+        self.target_model = openai.AsyncOpenAI(api_key=config.get_openai_api_key())
         # self.review_model = GenerativeModel(self.review_model_name)
-        self.review_model = openai.AsyncOpenAI(api_key=os.getenv('OPENAI_API_KEY'))
+        self.review_model = openai.AsyncOpenAI(api_key=config.get_openai_api_key())
 
     @backoff.on_exception(backoff.expo, Exception, max_tries=5)
     async def generate_target_model_response(self, question, prompt):
-        target_model = openai.AsyncOpenAI(api_key=os.getenv('OPENAI_API_KEY'))
+        target_model = openai.AsyncOpenAI(api_key=config.get_openai_api_key())
         response = await target_model.chat.completions.create(
             messages=[
                 {"role": "user", "content": question},
