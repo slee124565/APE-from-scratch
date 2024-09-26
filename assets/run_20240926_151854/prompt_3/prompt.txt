@@ -1,0 +1,4 @@
+
+
+Analyze the provided SVG path element to determine the geometric shape it represents. Break down the path into individual segments and visualize the overall shape. Count the number of sides and measure the angles, looking for symmetries and patterns. Use these observations to accurately identify the shape.
+
