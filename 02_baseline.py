@@ -33,6 +33,6 @@ if __name__ == "__main__":
         review_prompt_template_path
     )
 
-    # prompt = input("Please enter the prompt for evaluation: ")
-    prompt = 'Solve the given problem about geometric shapes.'
+    prompt = input("Please enter the prompt for evaluation: ")
+    # prompt = 'Solve the given problem about geometric shapes.'
     asyncio.run(evaluator.main(prompt))

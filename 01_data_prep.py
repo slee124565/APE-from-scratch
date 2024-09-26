@@ -5,7 +5,7 @@ dataset = load_dataset("lukaemon/bbh", "geometric_shapes", cache_dir="./bbh_nsha
 data = dataset["test"]
 data = data.shuffle(seed=1234)
 
-training = data.select(range(10))
+training = data.select(range(30))
 df_train = pd.DataFrame({"question": training["input"], "answer": training["target"]})
 
 test = data.select(range(100, 110))
