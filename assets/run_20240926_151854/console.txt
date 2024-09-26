@@ -1,0 +1,290 @@
+(venv) lee230917@intelmini APE-from-scratch % python 03_ape.py
+======================================================================================================================================================
+Prompt number 0
+Evaluating Prompt: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 30/30 [00:14<00:00,  2.06it/s]
+Evaluating Prompt: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 30/30 [00:13<00:00,  2.17it/s]
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Overall accuracy for prompt: 0.57
+======================================================================================================================================================
+======================================================================================================================================================
+Prompt number 1
+------------------------------------------------------------------------------------------------------------------------------------------------------
+To create a new prompt that achieves a higher accuracy, let's first analyze the given prompt and its effectiveness.
+
+### Analysis of the Given Prompt:
+- **Prompt Text:** "Solve the given problem about geometric shapes. Think step by step."
+- **Accuracy:** 0.57
+
+#### What Didn't Work:
+1. **General Instructions:** The prompt is quite generic and doesn't provide specific guidance on how to approach the problem.
+2. **Lack of Specificity:** "Think step by step" is a vague instruction and may not sufficiently direct the model's reasoning process.
+3. **Length:** The prompt is relatively short, which might lack detailed instructions that could help in solving the problem more accurately.
+
+#### What Could Work Better:
+1. **Detailed Instructions:** Providing more detailed steps or a structured approach could improve accuracy.
+2. **Encouraging Visualisation:** Since the problem involves geometric shapes, encouraging the model to visualize or understand the shape might help.
+3. **Clarifying the Task:** Clearly stating what needs to be done, such as identifying properties or analyzing the path, could be beneficial.
+4. **Formal Language:** Using formal and precise language could help in better understanding and execution.
+
+### Hypothetical Scenarios to Improve Accuracy:
+1. **Step-by-Step Breakdown:** Explicitly breaking down the task into smaller, manageable steps.
+2. **Visualisation Techniques:** Encouraging the model to visualize the geometric shape described.
+3. **Property Identification:** Asking the model to identify specific properties of the shape (e.g., sides, angles, vertices).
+
+Based on this analysis, here is a new prompt designed to improve accuracy:
+
+[[Carefully analyze the given SVG path element and determine the geometric shape it represents. Break down the path into its individual lines and segments, then visualize the shape formed by these segments. Identify key properties such as the number of sides, angles, and any symmetries. Use this information to accurately determine the shape.]]
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Evaluating Prompt: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 30/30 [00:17<00:00,  1.73it/s]
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Overall accuracy for prompt: 0.60
+======================================================================================================================================================
+======================================================================================================================================================
+Prompt number 2
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Let's analyze the given prompts to identify what worked and what didn't:
+
+### Low Accuracy Prompt (0.57)
+**Prompt Text:** "Solve the given problem about geometric shapes. Think step by step."
+- **Length:** Short
+- **Language:** Simple, informal
+- **Instruction:** General, not specific to SVG or geometric properties
+- **Issue:** Too vague, lacks specificity and guidance for a problem involving SVG paths and geometric shape analysis
+
+### Higher Accuracy Prompt (0.60)
+**Prompt Text:**
+"Carefully analyze the given SVG path element and determine the geometric shape it represents. Break down the path into its individual lines and segments, then visualize the shape formed by these segments. Identify key properties such as the number of sides, angles, and any symmetries. Use this information to accurately determine the shape."
+- **Length:** Medium to long
+- **Language:** More formal and detailed
+- **Instruction:** Specific to SVG path, step-by-step breakdown, considers properties like sides, angles, and symmetries
+- **Success:** More detailed and structured, leading to better guidance in solving the problem
+
+### Key Takeaways
+- **Specificity:** Higher accuracy prompts are more specific about the task, mentioning SVG paths and properties of geometric shapes.
+- **Detail Orientation:** Higher accuracy prompts provide a step-by-step approach and include detailed instructions on what to analyze.
+- **Formal Language:** More formal and structured language seems to help.
+
+### New Prompt Creation
+To create a new prompt that is distinct but builds on the strengths of the higher accuracy prompt, we can:
+- Maintain specificity about SVG paths and geometric properties.
+- Add extra layers of detail and guidance.
+- Use a formal tone and structured language.
+- Introduce hypothetical scenarios or additional tips for visualization.
+
+### New Prompt
+[[
+Examine the SVG path element provided. Begin by parsing the path into its individual segments and lines. Visualize each segment and combine them to form the overall shape. Count the number of sides and measure the angles between them. Look for any patterns or symmetries that may help in identifying the shape. Consider common geometric properties and compare them with the visualized shape. Ensure thorough analysis to accurately determine the geometric figure represented by the SVG path.
+]]
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Evaluating Prompt: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 30/30 [00:12<00:00,  2.34it/s]
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Overall accuracy for prompt: 0.50
+======================================================================================================================================================
+======================================================================================================================================================
+Prompt number 3
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Let's analyze the given prompts to identify patterns of success and failure.
+
+### Analysis of Existing Prompts
+
+1. **Lowest Accuracy (0.50)**:
+   - Prompt:
+     ```
+     Examine the SVG path element provided. Begin by parsing the path into its individual segments and lines. Visualize each segment and combine them to form the overall shape. Count the number of sides and measure the angles between them. Look for any patterns or symmetries that may help in identifying the shape. Consider common geometric properties and compare them with the visualized shape. Ensure thorough analysis to accurately determine the geometric figure represented by the SVG path.
+     ```
+   - Issues Observed:
+     - The prompt is quite long and detailed.
+     - It may overwhelm the model with too many instructions.
+     - Overly formal and complex language.
+
+2. **Medium Accuracy (0.57)**:
+   - Prompt:
+     ```
+     Solve the given problem about geometric shapes. Think step by step.
+     ```
+   - Issues Observed:
+     - This prompt is very short and lacks specific instructions.
+     - It does not guide the model on how to approach the problem, which might lead to a lack of focus.
+
+3. **Highest Accuracy (0.60)**:
+   - Prompt:
+     ```
+     Carefully analyze the given SVG path element and determine the geometric shape it represents. Break down the path into its individual lines and segments, then visualize the shape formed by these segments. Identify key properties such as the number of sides, angles, and any symmetries. Use this information to accurately determine the shape.
+     ```
+   - Positive Observations:
+     - This prompt is relatively concise but still provides clear instructions.
+     - It focuses on breaking down the path and visualizing the shape, which seems effective.
+     - Uses straightforward language without being overly complex.
+
+### Patterns to Consider
+
+**What Worked:**
+- Clear and concise instructions.
+- Focus on breaking down the path into segments and visualizing the shape.
+- Identification of key properties like sides, angles, and symmetries.
+
+**What Didn't Work:**
+- Overly detailed and complex instructions.
+- Lack of specific guidance on how to approach the task.
+
+### Formulating a New Prompt
+
+To create a high-accuracy prompt, we should aim to be clear and concise, providing specific steps without overwhelming the model. We should also maintain a balance between guiding the model and providing it the autonomy to analyze the shape.
+
+[[
+
+Analyze the provided SVG path element to determine the geometric shape it represents. Break down the path into individual segments and visualize the overall shape. Count the number of sides and measure the angles, looking for symmetries and patterns. Use these observations to accurately identify the shape.
+
+]]
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Evaluating Prompt: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 30/30 [00:16<00:00,  1.84it/s]
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Overall accuracy for prompt: 0.77
+======================================================================================================================================================
+======================================================================================================================================================
+Prompt number 4
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Let's analyze the provided prompts to understand what has worked well and what hasn't:
+
+1. **Prompt with 0.50 Accuracy:**
+   - Lengthy and detailed
+   - Focuses on parsing, visualization, counting sides, measuring angles, and identifying patterns and symmetries
+   - Possibly too complex or overwhelming
+
+2. **Prompt with 0.57 Accuracy:**
+   - Very brief and straightforward
+   - Lacks detailed instructions
+   - Likely too vague
+
+3. **Prompt with 0.60 Accuracy:**
+   - Detailed but slightly shorter than the 0.50 accuracy prompt
+   - Emphasizes breaking down the path, visualizing the shape, and identifying properties
+   - More focused than the 0.50 accuracy prompt
+
+4. **Prompt with 0.77 Accuracy:**
+   - Concise yet detailed
+   - Focuses on breaking down the path, visualizing the shape, counting sides, measuring angles, and identifying symmetries and patterns
+   - Balanced in terms of detail and length
+
+**Patterns that worked well:**
+- Emphasis on breaking down the path into segments
+- Visualization of the shape formed by the segments
+- Counting the number of sides and measuring angles
+- Identifying symmetries and patterns
+
+**Patterns that didn't work well:**
+- Overly detailed and lengthy instructions
+- Vague and brief prompts with insufficient guidance
+
+**Creating a new prompt:**
+To create a distinct prompt that likely achieves high accuracy, we need to balance detail and brevity, focusing on breaking down the path, visualizing the shape, and identifying key geometric properties. We should avoid overwhelming the user with too much information but also provide enough guidance to ensure accuracy.
+
+[[
+
+Carefully break down the SVG path element into individual segments. Visualize the shape these segments form. Count the number of sides and measure angles. Look for symmetries and patterns to accurately identify the geometric shape.
+
+]]
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Evaluating Prompt: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 30/30 [00:15<00:00,  1.95it/s]
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Overall accuracy for prompt: 0.67
+======================================================================================================================================================
+======================================================================================================================================================
+Prompt number 5
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Let's analyze the patterns and determine what has worked and what hasn't.
+
+### Analysis of High Accuracy Prompts:
+1. **Accuracy: 0.77**
+   - **Prompt Text:** "Analyze the provided SVG path element to determine the geometric shape it represents. Break down the path into individual segments and visualize the overall shape. Count the number of sides and measure the angles, looking for symmetries and patterns. Use these observations to accurately identify the shape."
+   - **Key Elements:**
+     - Clear and concise instructions
+     - Sequential steps: breaking down the path, visualizing, counting sides, measuring angles, looking for symmetries
+     - Emphasis on using observations to identify the shape
+
+2. **Accuracy: 0.67**
+   - **Prompt Text:** "Carefully break down the SVG path element into individual segments. Visualize the shape these segments form. Count the number of sides and measure angles. Look for symmetries and patterns to accurately identify the geometric shape."
+   - **Key Elements:**
+     - Similar sequential steps as the 0.77 prompt
+     - Slightly shorter and more focused instructions
+
+### Analysis of Low Accuracy Prompts:
+1. **Accuracy: 0.50**
+   - **Prompt Text:** "Examine the SVG path element provided. Begin by parsing the path into its individual segments and lines. Visualize each segment and combine them to form the overall shape. Count the number of sides and measure the angles between them. Look for any patterns or symmetries that may help in identifying the shape. Consider common geometric properties and compare them with the visualized shape. Ensure thorough analysis to accurately determine the geometric figure represented by the SVG path."
+   - **Key Elements:**
+     - Overly detailed and lengthy
+     - Too many steps, making it potentially confusing
+
+2. **Accuracy: 0.57**
+   - **Prompt Text:** "Solve the given problem about geometric shapes. Think step by step."
+   - **Key Elements:**
+     - Too vague and general
+     - Lacks specific instructions
+
+### Key Takeaways:
+- High accuracy prompts are clear, concise, and follow a logical sequence of steps.
+- Low accuracy prompts are either too detailed or too vague.
+- Emphasizing visualization, counting sides, measuring angles, and looking for symmetries seems to be effective.
+
+### New Prompt Creation:
+To create a new prompt with high accuracy, let's ensure it is distinct from the existing ones while incorporating the successful patterns of clear, concise, and logical instructions. We will avoid excessive details and vagueness.
+
+[[
+
+First, break down the given SVG path into its individual segments. Visualize the shape formed by these segments. Count the number of sides and measure the angles between them. Look for symmetries and recurring patterns. Finally, use these observations to accurately determine the geometric shape.
+
+]]
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Evaluating Prompt: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 30/30 [00:09<00:00,  3.18it/s]
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Overall accuracy for prompt: 0.67
+======================================================================================================================================================
+======================================================================================================================================================
+Final best prompt:
+
+Analyze the provided SVG path element to determine the geometric shape it represents. Break down the path into individual segments and visualize the overall shape. Count the number of sides and measure the angles, looking for symmetries and patterns. Use these observations to accurately identify the shape.
+
+
+Accuracy of best prompt: 0.77
+Improvement in accuracy: 0.13
+
+======================================================================================================================================================
+======================================================================================================================================================
+
+(venv) lee230917@intelmini APE-from-scratch % python 02_baseline.py
+Please enter the prompt for evaluation: Solve the given problem about geometric shapes. Think step by step.
+Evaluating Prompt: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 10/10 [00:09<00:00,  1.10it/s]
+Overall accuracy for the prompt: 0.50
+
+======================================================================================================================================================
+======================================================================================================================================================
+
+(venv) lee230917@intelmini APE-from-scratch % python 02_baseline.py
+Please enter the prompt for evaluation: Analyze the provided SVG path element to determine the geometric shape it represents. Break down the path into individual segments and visualize the overall shape. Count the number of sides and measure the angles, looking for symmetries and patterns. Use these observations to accurately identify the shape.
+Evaluating Prompt: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 10/10 [00:11<00:00,  1.15s/it]
+Overall accuracy for the prompt: 0.70
+
+======================================================================================================================================================
+======================================================================================================================================================
+
+(venv) lee230917@intelmini APE-from-scratch % cat config.py
+import os
+import dotenv
+
+dotenv.load_dotenv()
+
+
+def get_target_model_name():
+    return os.getenv('TARGET_MODEL_NAME', 'gpt-4o-mini')
+
+
+def get_eval_model_name():
+    return os.getenv('EVAL_MODEL_NAME', 'gpt-4o-mini')
+
+
+def get_opro_model_name():
+    return os.getenv('OPRO_MODEL_NAME', 'gpt-4o')
+
+
+def get_openai_api_key():
+    return os.getenv('OPENAI_API_KEY')
