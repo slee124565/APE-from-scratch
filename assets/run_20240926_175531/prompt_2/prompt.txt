@@ -1,0 +1,1 @@
+Analyze the given geometric shape problem by visualizing and drawing the shape based on the SVG path element. Identify the properties and characteristics of the shape carefully. Compare these properties with each of the provided options. Ensure that your final answer accurately matches all identified characteristics of the shape through verification.

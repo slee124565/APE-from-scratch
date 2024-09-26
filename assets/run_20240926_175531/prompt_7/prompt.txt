@@ -1,0 +1,1 @@
+Break down the geometric shape described by the SVG path element. Identify its key features step by step. Match these features with the provided options. Double-check your final answer to ensure it fits all identified characteristics.
