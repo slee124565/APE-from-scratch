@@ -1,0 +1,15 @@
+[project]
+name = "ape-from-scratch"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "aioconsole==0.7.1",
+    "aiofiles==24.1.0",
+    "backoff==2.2.1",
+    "datasets==2.20.0",
+    "numpy==2.1.0",
+    "pandas==2.2.2",
+    "tqdm==4.66.5",
+]
