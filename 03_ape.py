@@ -1,14 +1,17 @@
 import asyncio
 import os
 import pandas as pd
-from vertexai.generative_models import GenerativeModel, HarmBlockThreshold, HarmCategory
+import google.generativeai as genai
+from google.generativeai.types import HarmBlockThreshold, HarmCategory
 import re
 import aiofiles
 import datetime
 import aioconsole
 from prompt_evaluator import PromptEvaluator
 import backoff
+import dotenv
 
+dotenv.load_dotenv()
 
 class APD:
     def __init__(self, num_prompts, starting_prompt, df_train, metaprompt_template_path, generation_model_name, generation_config, safety_settings, target_model_name, target_model_config, review_model_name, review_model_config, review_prompt_template_path):
@@ -21,7 +24,7 @@ class APD:
         self.safety_settings = safety_settings
 
         # Initialize the generation model
-        self.generation_model = GenerativeModel(self.generation_model_name)
+        self.generation_model = genai.GenerativeModel(self.generation_model_name)
 
         # Create the "runs" folder if it doesn't exist
         self.runs_folder = "runs"
@@ -94,7 +97,6 @@ class APD:
             metaprompt,
             generation_config=self.generation_config,
             safety_settings=self.safety_settings,
-            stream=False,
         )
         return response
 
@@ -196,7 +198,7 @@ if __name__ == "__main__":
     df_train = pd.read_csv('train.csv')  # Load your training data
 
     metaprompt_template_path = 'metaprompt_template.txt'
-    generation_model_name = "gemini-1.5-pro"
+    generation_model_name = "gemini-2.5-pro"
     generation_config = {
         "temperature": 0.7,
     }
@@ -206,11 +208,11 @@ if __name__ == "__main__":
         HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT: HarmBlockThreshold.BLOCK_NONE,
         HarmCategory.HARM_CATEGORY_HARASSMENT: HarmBlockThreshold.BLOCK_NONE,
     }
-    target_model_name = "gemini-1.5-flash"
+    target_model_name = "gemini-2.5-flash"
     target_model_config = {
         "temperature": 0, "max_output_tokens": 1000
     }
-    review_model_name = "gemini-1.5-flash" 
+    review_model_name = "gemini-2.5-flash" 
     review_model_config = {
         "temperature": 0, "max_output_tokens": 10 
     }

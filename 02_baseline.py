@@ -1,17 +1,19 @@
 import asyncio
 import pandas as pd
+import dotenv
 from prompt_evaluator import PromptEvaluator
-from vertexai.generative_models import HarmBlockThreshold, HarmCategory
+from google.generativeai.types import HarmBlockThreshold, HarmCategory
 
+dotenv.load_dotenv()
 
 if __name__ == "__main__":
     df_train = pd.read_csv('test.csv')  # Load your training data
 
-    target_model_name = "gemini-1.5-flash"
+    target_model_name = "gemini-2.5-flash"
     target_model_config = {
         "temperature": 0, "max_output_tokens": 1000
     }
-    review_model_name = "gemini-1.5-flash" 
+    review_model_name = "gemini-2.5-flash" 
     review_model_config = {
         "temperature": 0, "max_output_tokens": 10 
     }

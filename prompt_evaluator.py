@@ -1,6 +1,6 @@
 import asyncio
 import pandas as pd
-from vertexai.generative_models import GenerativeModel
+import google.generativeai as genai
 from tqdm.asyncio import tqdm_asyncio
 import backoff
 
@@ -18,12 +18,12 @@ class PromptEvaluator:
         self.safety_settings = safety_settings
         self.review_prompt_template_path = review_prompt_template_path
 
-        self.target_model = GenerativeModel(self.target_model_name)
-        self.review_model = GenerativeModel(self.review_model_name)
+        self.target_model = genai.GenerativeModel(self.target_model_name)
+        self.review_model = genai.GenerativeModel(self.review_model_name)
 
     @backoff.on_exception(backoff.expo, Exception, max_tries=5)
     async def generate_target_model_response(self, question, prompt):
-        target_model = GenerativeModel(
+        target_model = genai.GenerativeModel(
             self.target_model_name,
             generation_config=self.target_model_config,
             safety_settings=self.safety_settings,
@@ -32,17 +32,15 @@ class PromptEvaluator:
 
         response = await target_model.generate_content_async(
             question,
-            stream=False,
         )
         return response.text
 
     @backoff.on_exception(backoff.expo, Exception, max_tries=5)
     async def generate_review_model_response(self, review_prompt):
         review_response = await self.review_model.generate_content_async(
-            [review_prompt],
+            contents=[review_prompt],
             generation_config=self.review_model_config,
             safety_settings=self.safety_settings,
-            stream=False,
         )
         return review_response.text.strip().lower()
 
