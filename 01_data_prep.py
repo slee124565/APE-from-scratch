@@ -5,10 +5,10 @@ dataset = load_dataset("lukaemon/bbh", "geometric_shapes", cache_dir="./bbh_nsha
 data = dataset["test"]
 data = data.shuffle(seed=1234)
 
-training = data.select(range(100))
+training = data.select(range(20))
 df_train = pd.DataFrame({"question": training["input"], "answer": training["target"]})
 
-test = data.select(range(100, 200))
+test = data.select(range(100, 120))
 df_test = pd.DataFrame({"question": test["input"], "answer": test["target"]})
 
 df_train.to_csv("train.csv", index=False)

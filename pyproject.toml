@@ -9,6 +9,7 @@ dependencies = [
     "aiofiles==24.1.0",
     "backoff==2.2.1",
     "datasets==2.20.0",
+    "google-genai>=1.31.0",
     "numpy==2.1.0",
     "pandas==2.2.2",
     "tqdm==4.66.5",

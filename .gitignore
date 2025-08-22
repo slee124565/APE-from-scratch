@@ -128,3 +128,6 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+# ape-from-scratch
+*.csv
+bbh_nshapes_cache/
