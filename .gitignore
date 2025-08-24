@@ -131,3 +131,4 @@ dmypy.json
 # ape-from-scratch
 *.csv
 bbh_nshapes_cache/
+.idea/

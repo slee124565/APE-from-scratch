@@ -1,8 +1,8 @@
 import asyncio
 import os
 import pandas as pd
-import google.generativeai as genai
-from google.generativeai.types import HarmBlockThreshold, HarmCategory
+from google import genai
+from google.genai.types import HarmCategory, HarmBlockThreshold
 import re
 import aiofiles
 import datetime

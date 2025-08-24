@@ -8,7 +8,7 @@ data = data.shuffle(seed=1234)
 training = data.select(range(20))
 df_train = pd.DataFrame({"question": training["input"], "answer": training["target"]})
 
-test = data.select(range(100, 120))
+test = data.select(range(100, 110))
 df_test = pd.DataFrame({"question": test["input"], "answer": test["target"]})
 
 df_train.to_csv("train.csv", index=False)

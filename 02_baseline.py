@@ -2,7 +2,8 @@ import asyncio
 import pandas as pd
 import dotenv
 from prompt_evaluator import PromptEvaluator
-from google.generativeai.types import HarmBlockThreshold, HarmCategory
+# from google.genai.types import HarmCategory, HarmBlockThreshold
+from google.generativeai.types import HarmCategory, HarmBlockThreshold
 
 dotenv.load_dotenv()
 
@@ -29,6 +30,10 @@ if __name__ == "__main__":
     evaluator = PromptEvaluator(
         df_train, target_model_name, target_model_config, review_model_name, review_model_config, safety_settings, review_prompt_template_path
     )
-    
+
+    default_prompt = 'Solve the given problem about geometric shapes.'
     prompt = input("Please enter the prompt for evaluation: ")
+    if not prompt:
+        prompt = default_prompt
+
     asyncio.run(evaluator.main(prompt))
