@@ -1,16 +1,22 @@
 import asyncio
 import pandas as pd
-# import google as genai
-import google.generativeai as genai
 from tqdm.asyncio import tqdm_asyncio
 import backoff
+from google.genai import Client, types
+import dotenv
+
+dotenv.load_dotenv()
+client = Client()
+
 
 class ReviewModelError(Exception):
     """Custom exception for review model errors."""
     pass
 
+
 class PromptEvaluator:
-    def __init__(self, df_train, target_model_name, target_model_config, review_model_name, review_model_config, safety_settings, review_prompt_template_path):
+    def __init__(self, df_train, target_model_name, target_model_config, review_model_name, review_model_config,
+                 safety_settings, review_prompt_template_path):
         self.df_train = df_train
         self.target_model_name = target_model_name
         self.target_model_config = target_model_config
@@ -19,29 +25,50 @@ class PromptEvaluator:
         self.safety_settings = safety_settings
         self.review_prompt_template_path = review_prompt_template_path
 
-        self.target_model = genai.GenerativeModel(self.target_model_name)
-        self.review_model = genai.GenerativeModel(self.review_model_name)
+        # self.target_model = genai.GenerativeModel(self.target_model_name)
+        # self.review_model = genai.GenerativeModel(self.review_model_name)
+        self.target_model = client
+        self.review_model = client
 
     @backoff.on_exception(backoff.expo, Exception, max_tries=5)
     async def generate_target_model_response(self, question, prompt):
-        target_model = genai.GenerativeModel(
-            self.target_model_name,
-            generation_config=self.target_model_config,
-            safety_settings=self.safety_settings,
-            system_instruction=prompt
-        )
-
-        response = await target_model.generate_content_async(
-            question,
+        # target_model = genai.GenerativeModel(
+        #     self.target_model_name,
+        #     generation_config=self.target_model_config,
+        #     safety_settings=self.safety_settings,
+        #     system_instruction=prompt
+        # )
+        #
+        # response = await target_model.generate_content_async(
+        #     question,
+        # )
+        response = await Client().aio.models.generate_content(
+            model=self.target_model_name,
+            contents=question,
+            config=types.GenerateContentConfig(
+                system_instruction=prompt,
+                temperature=self.target_model_config["temperature"],
+                max_output_tokens=self.target_model_config["max_output_tokens"],
+                safety_settings=self.safety_settings
+            ),
         )
         return response.text
 
     @backoff.on_exception(backoff.expo, Exception, max_tries=5)
     async def generate_review_model_response(self, review_prompt):
-        review_response = await self.review_model.generate_content_async(
+        # review_response = await self.review_model.generate_content_async(
+        #     contents=[review_prompt],
+        #     generation_config=self.review_model_config,
+        #     safety_settings=self.safety_settings,
+        # )
+        review_response = await self.review_model.aio.models.generate_content(
+            model=self.review_model_name,
             contents=[review_prompt],
-            generation_config=self.review_model_config,
-            safety_settings=self.safety_settings,
+            config=types.GenerateContentConfig(
+                temperature=self.target_model_config["temperature"],
+                max_output_tokens=self.target_model_config["max_output_tokens"],
+                safety_settings=self.safety_settings
+            ),
         )
         return review_response.text.strip().lower()
 
@@ -69,7 +96,7 @@ class PromptEvaluator:
 
             is_correct = review_result == 'true'  # Check if the response is 'True'
 
-            return row.name, model_response, is_correct 
+            return row.name, model_response, is_correct
         except ReviewModelError as e:
             print(f"Error: {e}. The review model did not return a valid response. Terminating the program.")
             raise  # Re-raise the exception to be caught in the main function
