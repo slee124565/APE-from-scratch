@@ -13,7 +13,7 @@ import backoff
 import dotenv
 
 dotenv.load_dotenv()
-client = genai.Client(api_key=os.getenv('GOOGLE_API_KEY'))
+client = genai.Client(api_key=os.getenv('GEMINI_API_KEY'))
 
 
 class APD:
@@ -211,7 +211,7 @@ class APD:
 
 
 if __name__ == "__main__":
-    num_prompts = 5
+    num_prompts = 3
     starting_prompt = "Solve the given problem about geometric shapes. Think step by step."
 
     df_train = pd.read_csv('train.csv')  # Load your training data

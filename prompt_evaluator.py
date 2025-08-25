@@ -3,10 +3,13 @@ import pandas as pd
 from tqdm.asyncio import tqdm_asyncio
 import backoff
 from google.genai import Client, types
-import dotenv
+import dotenv, os, logging
 
 dotenv.load_dotenv()
-client = Client()
+
+# Configure logging
+logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
 
 
 class ReviewModelError(Exception):
@@ -27,11 +30,14 @@ class PromptEvaluator:
 
         # self.target_model = genai.GenerativeModel(self.target_model_name)
         # self.review_model = genai.GenerativeModel(self.review_model_name)
-        self.target_model = client
-        self.review_model = client
+        self.target_model = Client(api_key=os.getenv('GEMINI_API_KEY'))
+        self.review_model = Client(api_key=os.getenv('GEMINI_API_KEY'))
 
     @backoff.on_exception(backoff.expo, Exception, max_tries=5)
     async def generate_target_model_response(self, question, prompt):
+        logger.debug("="*40)
+        logger.debug(f"Generating target model response with prompt: {prompt}")
+        logger.debug(f"Question: {question}")
         # target_model = genai.GenerativeModel(
         #     self.target_model_name,
         #     generation_config=self.target_model_config,
@@ -42,7 +48,7 @@ class PromptEvaluator:
         # response = await target_model.generate_content_async(
         #     question,
         # )
-        response = await Client().aio.models.generate_content(
+        response = await self.target_model.aio.models.generate_content(
             model=self.target_model_name,
             contents=question,
             config=types.GenerateContentConfig(
@@ -52,6 +58,8 @@ class PromptEvaluator:
                 safety_settings=self.safety_settings
             ),
         )
+        logger.debug("="*40)
+        logger.debug(f"Received response from target model: {response.text}\n\n")
         return response.text
 
     @backoff.on_exception(backoff.expo, Exception, max_tries=5)
@@ -70,6 +78,8 @@ class PromptEvaluator:
                 safety_settings=self.safety_settings
             ),
         )
+        logger.debug("="*40)
+        logger.debug(f"Received response from review model: {review_response.text}\n\n")
         return review_response.text.strip().lower()
 
     async def generate_and_review(self, row, prompt):
@@ -88,11 +98,12 @@ class PromptEvaluator:
 
             # Check if the target model returned a valid response
             if not model_response or not isinstance(model_response, str):
-                raise ReviewModelError("Target model did not return a valid response.")
+                raise ReviewModelError(f"Target model did not return a valid response. [{model_response}]")
 
             # Assert that the review model returns either 'true' or 'false'
             if review_result not in ['true', 'false']:
-                raise ReviewModelError("Review model did not return a valid response.")
+                # logger.warning(f"Review model did not return a valid response. [{review_result}]")
+                raise ReviewModelError(f"Review model did not return a valid response. [{review_result}]")
 
             is_correct = review_result == 'true'  # Check if the response is 'True'
 
@@ -101,6 +112,7 @@ class PromptEvaluator:
             print(f"Error: {e}. The review model did not return a valid response. Terminating the program.")
             raise  # Re-raise the exception to be caught in the main function
         except Exception as e:
+            logger.error(f"An error occurred: {e}", exc_info=True)
             print(f"An error occurred: {e}. Terminating the program.")
             raise  # Re-raise the exception to be caught in the main function
 
@@ -144,7 +156,7 @@ class PromptEvaluator:
         try:
             accuracy = await self.evaluate_prompt(prompt)
             print(f"Overall accuracy for the prompt: {accuracy:.2f}")
-        except ReviewModelError:
-            print("The program has terminated due to an invalid response from the review model.")
+        except ReviewModelError as e:
+            print(f"The program has terminated due to an invalid response from the review model. {e}")
         except Exception as e:
             print(f"The program has terminated due to an unexpected error: {e}")

@@ -1,26 +1,19 @@
 import asyncio
-import os
-
 import pandas as pd
-import dotenv
 from prompt_evaluator import PromptEvaluator
 from google.genai.types import HarmCategory, HarmBlockThreshold
-from google.genai import Client, types
-import os
-
-dotenv.load_dotenv()
-client = Client(api_key=os.getenv('GOOGLE_API_KEY'))
+from google.genai import types
 
 if __name__ == "__main__":
     df_train = pd.read_csv('test.csv')  # Load your training data
 
     target_model_name = "gemini-2.5-flash-lite"
     target_model_config = {
-        "temperature": 0, "max_output_tokens": 1000
+        "temperature": 0, "max_output_tokens": 5000
     }
     review_model_name = "gemini-2.5-flash-lite"
     review_model_config = {
-        "temperature": 0, "max_output_tokens": 10
+        "temperature": 0, "max_output_tokens": 100
     }
     # safety_settings = {
     #     HarmCategory.HARM_CATEGORY_HATE_SPEECH: HarmBlockThreshold.BLOCK_NONE,
