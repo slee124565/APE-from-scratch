@@ -11,9 +11,14 @@ import aioconsole
 from prompt_evaluator import PromptEvaluator
 import backoff
 import dotenv
+import logging
 
 dotenv.load_dotenv()
 client = genai.Client(api_key=os.getenv('GEMINI_API_KEY'))
+
+# Configure logging
+logging.basicConfig(level=logging.WARNING, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
 
 
 class APD:
@@ -134,6 +139,10 @@ class APD:
                 prompt_accuracies.append((new_prompt, accuracy))
             else:
                 metaprompt = self.update_metaprompt(self.prompt_history, self.metaprompt_template_path)
+                await aioconsole.aprint("-" * 150)
+                await aioconsole.aprint(metaprompt)
+                await aioconsole.aprint("-" * 150)
+
 
                 try:
                     response = await self.generate_with_backoff(metaprompt)
@@ -217,23 +226,34 @@ if __name__ == "__main__":
     df_train = pd.read_csv('train.csv')  # Load your training data
 
     metaprompt_template_path = 'metaprompt_template.txt'
-    generation_model_name = "gemini-2.5-pro"
+    generation_model_name = "gemini-2.5-flash"
     generation_config = {
-        "temperature": 0.7,
+        "temperature": 0.7, "max_output_tokens": 65536
     }
-    safety_settings = {
-        HarmCategory.HARM_CATEGORY_HATE_SPEECH: HarmBlockThreshold.BLOCK_NONE,
-        HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT: HarmBlockThreshold.BLOCK_NONE,
-        HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT: HarmBlockThreshold.BLOCK_NONE,
-        HarmCategory.HARM_CATEGORY_HARASSMENT: HarmBlockThreshold.BLOCK_NONE,
-    }
-    target_model_name = "gemini-2.5-flash"
+    # safety_settings = {
+    #     HarmCategory.HARM_CATEGORY_HATE_SPEECH: HarmBlockThreshold.BLOCK_NONE,
+    #     HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT: HarmBlockThreshold.BLOCK_NONE,
+    #     HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT: HarmBlockThreshold.BLOCK_NONE,
+    #     HarmCategory.HARM_CATEGORY_HARASSMENT: HarmBlockThreshold.BLOCK_NONE,
+    # }
+    safety_settings = [
+        types.SafetySetting(category=HarmCategory.HARM_CATEGORY_HATE_SPEECH,
+                            threshold=HarmBlockThreshold.BLOCK_NONE),
+        types.SafetySetting(category=HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
+                            threshold=HarmBlockThreshold.BLOCK_NONE),
+        types.SafetySetting(category=HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
+                            threshold=HarmBlockThreshold.BLOCK_NONE),
+        types.SafetySetting(category=HarmCategory.HARM_CATEGORY_HARASSMENT,
+                            threshold=HarmBlockThreshold.BLOCK_NONE)
+    ]
+
+    target_model_name = "gemini-2.5-flash-lite"
     target_model_config = {
-        "temperature": 0, "max_output_tokens": 1000
+        "temperature": 0, "max_output_tokens": 65536
     }
-    review_model_name = "gemini-2.5-flash"
+    review_model_name = "gemini-2.5-flash-lite"
     review_model_config = {
-        "temperature": 0, "max_output_tokens": 10
+        "temperature": 0, "max_output_tokens": 1024
     }
     review_prompt_template_path = 'review_prompt_template.txt'  # Path to the review prompt text file
 

@@ -8,7 +8,7 @@ import dotenv, os, logging
 dotenv.load_dotenv()
 
 # Configure logging
-logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+logging.basicConfig(level=logging.WARNING, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
 
@@ -102,8 +102,8 @@ class PromptEvaluator:
 
             # Assert that the review model returns either 'true' or 'false'
             if review_result not in ['true', 'false']:
-                # logger.warning(f"Review model did not return a valid response. [{review_result}]")
-                raise ReviewModelError(f"Review model did not return a valid response. [{review_result}]")
+                logger.warning(f"Review model did not return a valid response. [{review_result}]")
+                # raise ReviewModelError(f"Review model did not return a valid response. [{review_result}]")
 
             is_correct = review_result == 'true'  # Check if the response is 'True'
 

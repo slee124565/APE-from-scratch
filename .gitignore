@@ -132,3 +132,4 @@ dmypy.json
 *.csv
 bbh_nshapes_cache/
 .idea/
+runs/
